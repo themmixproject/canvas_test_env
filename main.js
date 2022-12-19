@@ -41,6 +41,6 @@ canvasContext.lineTo(300, 150);
 canvasContext.stroke();
 
 
-
+output.innerHTML += " TESTED1"
 
 
