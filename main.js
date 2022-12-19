@@ -23,3 +23,23 @@ canvasContext.backingStorePixelRatio || 1;
 devicePixelRatio = devicePixelRatio / backingStoreRatio;
 output.innerHTML = devicePixelRatio;
 
+
+
+
+canvasContext.lineWidth = 5
+canvasContext.beginPath();
+canvasContext.arc(100, 75, 50, 0, 2 * Math.PI);
+canvasContext.stroke();
+
+canvasContext.lineCap = "round"
+canvasContext.lineWidth = 10
+
+canvasContext.beginPath();
+canvasContext.moveTo(100, 300);
+canvasContext.lineTo(300, 150);
+canvasContext.stroke();
+
+
+
+
+
