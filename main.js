@@ -40,6 +40,8 @@ canvasContext.moveTo(100, 300);
 canvasContext.lineTo(300, 150);
 canvasContext.stroke();
 
+canvasContext.fillRect(width - 200, 0, 200, 200)
+
 
 output.innerHTML += " TESTED1"
 
