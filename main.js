@@ -1,48 +1,50 @@
 // setting up canvas
 var canvas = document.getElementById("canvas");
-var canvasContext = canvas.getContext('2d');
+var canvasContext = canvas.getContext("2d");
 
 // canvas.height = window.innerHeight;
 
 let output = document.getElementById("output");
-console.log(output)
+console.log(output);
 
-var devicePixelRatio = window.devicePixelRatio || 1;
-var backingStoreRatio = canvasContext.webkitBackingStorePixelRatio ||
-canvasContext.mozBackingStorePixelRatio ||
-canvasContext.msBackingStorePixelRatio ||
-canvasContext.oBackingStorePixelRatio ||
-canvasContext.backingStorePixelRatio || 1;
+var devicePixelRatio = Math.ceil(window.devicePixelRatio || 1);
+var backingStoreRatio =
+    canvasContext.webkitBackingStorePixelRatio ||
+    canvasContext.mozBackingStorePixelRatio ||
+    canvasContext.msBackingStorePixelRatio ||
+    canvasContext.oBackingStorePixelRatio ||
+    canvasContext.backingStorePixelRatio ||
+    1;
 
 devicePixelRatio = devicePixelRatio / backingStoreRatio;
 output.innerHTML = devicePixelRatio;
 
+canvasContext.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
 
-let height = 500; 
-canvas.height =height * devicePixelRatio;
-canvas.style.height = height + "px"
-
+let height = window.innerHeight;
 let width = window.innerWidth;
 canvas.width = width * devicePixelRatio;
-canvas.style.width  = width + "px"
-canvasContext.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0)
+canvas.height = height * devicePixelRatio;
+canvas.style.height = height + "px";
+canvas.style.width = width + "px";
+
+
+canvasCenter = {
+    x: canvas.width / 2,
+    y: canvas.height / 2,
+};
+
+let squareHeightWidth = 350;
+canvasContext.fillRect(
+    canvasCenter.x - squareHeightWidth / 2,
+    canvasCenter.y - squareHeightWidth / 2,
+    squareHeightWidth,
+    squareHeightWidth
+);
 
 canvasContext.lineWidth = 5
 canvasContext.beginPath();
 canvasContext.arc(100, 75, 50, 0, 2 * Math.PI);
 canvasContext.stroke();
 
-canvasContext.lineCap = "round"
-canvasContext.lineWidth = 10
-
-canvasContext.beginPath();
-canvasContext.moveTo(100, 300);
-canvasContext.lineTo(300, 150);
-canvasContext.stroke();
-
-canvasContext.fillRect(width - 200, 0, 200, 200)
-
-
-output.innerHTML += " TESTED1"
-
-
+output.innerHTML += " TESTED1";
