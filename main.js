@@ -19,7 +19,7 @@ var backingStoreRatio =
 devicePixelRatio = devicePixelRatio / backingStoreRatio;
 output.innerHTML = devicePixelRatio;
 
-canvasContext.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+// canvasContext.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
 
 let height = window.innerHeight;
 let width = window.innerWidth;
@@ -34,7 +34,7 @@ canvasCenter = {
     y: canvas.height / 2,
 };
 
-let squareHeightWidth = 350;
+let squareHeightWidth = 350 * devicePixelRatio;
 canvasContext.fillRect(
     canvasCenter.x - squareHeightWidth / 2,
     canvasCenter.y - squareHeightWidth / 2,
@@ -47,4 +47,12 @@ canvasContext.beginPath();
 canvasContext.arc(100, 75, 50, 0, 2 * Math.PI);
 canvasContext.stroke();
 
-output.innerHTML += " TESTED1";
+grid = {
+    margin: 15 * devicePixelRatio,
+    celPadding: 20 * devicePixelRatio,
+    lineLength: 350 * devicePixelRatio
+}
+
+
+
+output.innerHTML += " TESTED3";
