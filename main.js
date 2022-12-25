@@ -94,4 +94,4 @@ drawGridOnCanvas();
 
 
 
-output.innerHTML += " TESTED4";
+output.innerHTML += " TESTED5";
