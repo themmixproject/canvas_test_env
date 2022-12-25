@@ -19,6 +19,7 @@ var backingStoreRatio =
 devicePixelRatio = devicePixelRatio / backingStoreRatio;
 output.innerHTML = devicePixelRatio;
 
+
 // canvasContext.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
 
 let height = window.innerHeight;
@@ -30,9 +31,13 @@ canvas.style.width = width + "px";
 // canvasContext.scale(devicePixelRatio /width , devicePixelRatio / /)
 // canvasContext.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, -width , -height)
 
+// c.getContext('2d').scale(window.devicePixelRatio, window.devicePixelRatio);
+if(window.devicePixelRatio > 1){
+    canvasContext.scale(window.devicePixelRatio, window.devicePixelRatio)
+}
 canvasCenter = {
-    x: canvas.width / 2,
-    y: canvas.height / 2,
+    x: width / 2,
+    y: height / 2,
 };
 
 // let squareHeightWidth = 350 * devicePixelRatio;
