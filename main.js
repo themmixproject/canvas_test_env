@@ -27,20 +27,21 @@ canvas.width = width * devicePixelRatio;
 canvas.height = height * devicePixelRatio;
 canvas.style.height = height + "px";
 canvas.style.width = width + "px";
-
+// canvasContext.scale(devicePixelRatio /width , devicePixelRatio / /)
+// canvasContext.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, -width , -height)
 
 canvasCenter = {
     x: canvas.width / 2,
     y: canvas.height / 2,
 };
 
-let squareHeightWidth = 350 * devicePixelRatio;
-canvasContext.fillRect(
-    canvasCenter.x - squareHeightWidth / 2,
-    canvasCenter.y - squareHeightWidth / 2,
-    squareHeightWidth,
-    squareHeightWidth
-);
+// let squareHeightWidth = 350 * devicePixelRatio;
+// canvasContext.fillRect(
+//     canvasCenter.x - squareHeightWidth / 2,
+//     canvasCenter.y - squareHeightWidth / 2,
+//     squareHeightWidth,
+//     squareHeightWidth
+// );
 
 canvasContext.lineWidth = 5
 canvasContext.beginPath();
@@ -48,11 +49,44 @@ canvasContext.arc(100, 75, 50, 0, 2 * Math.PI);
 canvasContext.stroke();
 
 grid = {
-    margin: 15 * devicePixelRatio,
-    celPadding: 20 * devicePixelRatio,
-    lineLength: 350 * devicePixelRatio
+    margin: 15,
+    celPadding: 20,
+    lineLength: 350.5
+};
+grid.sectionLength = grid.lineLength / 3;
+grid.width = grid.lineLength + grid.margin;
+grid.height = grid.width;
+
+function drawGridOnCanvas(){
+    // loadStyle(styles.grid);
+
+    var lineStart = grid.sectionLength * 1.5;
+    var lineEnd = -lineStart;
+
+    var verticalStart = canvasCenter.y + lineStart;
+    var verticalEnd = canvasCenter.y + lineEnd;
+
+    var horizontalStart = canvasCenter.x + lineStart;
+    var horizontalEnd = canvasCenter.x + lineEnd;
+
+    canvasContext.beginPath();
+
+    for(i=1; i>=-2; i-=2){
+        var lineDifference = grid.sectionLength * 0.5 * i;
+        var horizontalDifference = canvasCenter.y - lineDifference;
+        var verticalDifference = canvasCenter.x - lineDifference;
+
+        canvasContext.moveTo(verticalDifference, verticalStart);
+        canvasContext.lineTo(verticalDifference, verticalEnd); 
+
+        canvasContext.moveTo(horizontalStart, horizontalDifference);
+        canvasContext.lineTo(horizontalEnd, horizontalDifference);
+    }
+
+    canvasContext.stroke();
 }
+drawGridOnCanvas();
 
 
 
-output.innerHTML += " TESTED3";
+output.innerHTML += " TESTED4";
